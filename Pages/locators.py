@@ -13,4 +13,4 @@ class ProductPageLocators():
     BASKET_TOTAL = (By.CSS_SELECTOR, ".alert-noicon.alert-info p strong")
     PRODUCT_PRICE = (By.CSS_SELECTOR, "p.price_color")
     PRODUCT_NAME =(By.CSS_SELECTOR, ".col-sm-6.product_main > h1")
-    ITEM_ADDED_MESSAGE = (By.CSS_SELECTOR, "#messages .alert.alert-safe.alert-noicon.alert-success:nth-child(1)")
+    ITEM_ADDED_MESSAGE = (By.CSS_SELECTOR, "#messages .alert.alert-safe.alert-noicon.alert-success:nth-child(1) strong")
