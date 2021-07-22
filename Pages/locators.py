@@ -10,7 +10,7 @@ class LoginPageLocators():
 
 class ProductPageLocators():
     ADD_TO_CART = (By.CSS_SELECTOR, ".btn.btn-lg.btn-primary.btn-add-to-basket")
-    BASKET_TOTAL = (By.CSS_SELECTOR, ".basket-mini.pull-right")
-    PRODUCT_PRICE = (By.CSS_SELECTOR, ".col-sm-6.product_main .price_color")
+    BASKET_TOTAL = (By.CSS_SELECTOR, ".alert-noicon.alert-info p strong")
+    PRODUCT_PRICE = (By.CSS_SELECTOR, "p.price_color")
     PRODUCT_NAME =(By.CSS_SELECTOR, ".col-sm-6.product_main > h1")
     ITEM_ADDED_MESSAGE = (By.CSS_SELECTOR, "#messages .alert.alert-safe.alert-noicon.alert-success:nth-child(1)")

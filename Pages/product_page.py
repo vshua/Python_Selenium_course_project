@@ -8,19 +8,22 @@ class ProductPage(BasePage):
         add_to_cart.click()
 
     def right_item_was_added_to_cart_message(self):
-        product_name = self.browser.find_element(*ProductPageLocators.PRODUCT_NAME)
-        product_name_text = product_name.get_attribute('text')
-        added_message = self.browser.find_element(*ProductPageLocators.ITEM_ADDED_MESSAGE)
-        message_text = added_message.get_attribute('text')
-        assert str(product_name_text) in str(message_text), "Product name is not presented in the alert"
+        assert self.is_element_present(*ProductPageLocators.PRODUCT_NAME), "Product name is not present"
+        assert self.is_element_present(*ProductPageLocators.ITEM_ADDED_MESSAGE
+        ), "No alert that a product has been added to cart"
+        product_name_text = self.browser.find_element(*ProductPageLocators.PRODUCT_NAME).text
+        added_message_text = self.browser.find_element(*ProductPageLocators.ITEM_ADDED_MESSAGE).text
+        print(product_name_text, added_message_text)
+        assert product_name_text in added_message_text, \
+            f"The alert contains wrong product name: {added_message_text} - {product_name_text}"
         assert True
 
     def cart_price_is_right(self):
-        product_price = self.browser.find_element(*ProductPageLocators.PRODUCT_PRICE)
-        price = product_price.get_attribute('text')
-        cart_price = self.browser.find_element(*ProductPageLocators.BASKET_TOTAL)
-        cart = cart_price.get_attribute('text')
-        assert str(price) == str(cart), "Basket total differs from product price"
+        assert self.is_element_present(*ProductPageLocators.PRODUCT_PRICE), "Product price is not present"
+        assert self.is_element_present(*ProductPageLocators.BASKET_TOTAL), "No alert with cart status"
+        message_text = self.browser.find_element(*ProductPageLocators.BASKET_TOTAL).text
+        product_cost = self.browser.find_element(*ProductPageLocators.PRODUCT_PRICE).text
+        print(message_text, product_cost)
+        assert product_cost == message_text, \
+            f"Product cost in cart is not equal to the product cost {message_text} != {product_cost}"
         assert True
-
-
